@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Al Bawab, LLC - Driver Onboarding</title>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("pwq9-dXv18wer2hLJ");  // Your public key
+    })();
+  </script>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+    .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #2c3e50; margin-bottom: 10px; }
+    h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin: 40px 0 20px 0; font-size: 1.4em; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+    label { font-weight: bold; margin-bottom: 5px; display: block; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+    input:focus, select:focus, textarea:focus { border-color: #3498db; outline: none; }
+    button { grid-column: 1 / -1; padding: 14px; background: #27ae60; color: white; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; margin-top: 30px; }
+    button:hover { background: #219a52; }
+    .full-width { grid-column: 1 / -1; }
+    .success-message { color: #27ae60; font-weight: bold; text-align: center; margin: 20px 0; font-size: 1.3em; padding: 15px; background: #eafaf1; border-radius: 8px; }
+    .error-message { color: #e74c3c; font-weight: bold; text-align: center; margin: 20px 0; font-size: 1.1em; padding: 15px; background: #fdf2f2; border-radius: 8px; }
+    .checkbox-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; margin: 10px 0; }
+    .checkbox-item { display: flex; align-items: center; }
+    .checkbox-item input { width: auto; margin-right: 10px; transform: scale(1.2); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Al Bawab, LLC New Driver Onboarding Application</h1>
+    <div id="statusMessage"></div>
+
+    <form id="driverForm">
+
+      <!-- Section 1: Personal Information -->
+      <div class="full-width">
+        <h2>Personal Information</h2>
+      </div>
+      <div><label>First Name</label><input type="text" id="firstName" required /></div>
+      <div><label>Last Name</label><input type="text" id="lastName" required /></div>
+      <div><label>Social Security Number</label><input type="text" id="ssn" placeholder="XXX-XX-XXXX" maxlength="11" required autocomplete="off" /></div>
+      <div><label>Date of Birth</label><input type="date" id="dob" required /></div>
+      <div><label>Phone Number</label><input type="tel" id="phone" required /></div>
+      <div><label>Email Address</label><input type="email" id="email" /></div>
+      <div><label>Street Address</label><input type="text" id="address" required /></div>
+      <div><label>City</label><input type="text" id="city" required /></div>
+      <div><label>State</label><input type="text" id="state" required /></div>
+      <div><label>ZIP Code</label><input type="text" id="zip" required /></div>
+
+      <!-- Section 2: License Information -->
+      <div class="full-width">
+        <h2>License Information</h2>
+      </div>
+      <div><label>CDL Number</label><input type="text" id="cdlNumber" required /></div>
+      <div><label>CDL State Issued</label>
+        <select id="cdlState" required>
+          <option value="">Select a state...</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
+      <div><label>CDL Class</label>
+        <select id="cdlClass" required>
+          <option value="">Select...</option>
+          <option value="A">Class A</option>
+          <option value="B">Class B</option>
+          <option value="C">Class C</option>
+        </select>
+      </div>
+      <div><label>Endorsements (comma-separated)</label><input type="text" id="endorsements" placeholder="e.g., T, P, H" /></div>
+
+      <!-- Section 3: Experience Information -->
+      <div class="full-width">
+        <h2>Experience Information</h2>
+      </div>
+      <div><label>Years of Experience</label><input type="number" id="experience" min="0" required /></div>
+      <div><label>Previous Carrier</label><input type="text" id="previousCarrier" /></div>
+
+      <!-- Employment Details -->
+      <div class="full-width">
+        <h2>Employment Details</h2>
+      </div>
+      <div><label>Hire Date</label><input type="date" id="hireDate" required /></div>
+      <div><label>Driver Type</label>
+        <select id="driverType" required>
+          <option value="">Select...</option>
+          <option value="Company">Company Driver</option>
+          <option value="Owner-Operator">Owner-Operator</option>
+          <option value="Lease">Lease Driver</option>
+        </select>
+      </div>
+      <div><label>Truck Number (if assigned)</label><input type="text" id="truckNumber" /></div>
+      <div><label>Trailer Number (if assigned)</label><input type="text" id="trailerNumber" /></div>
+
+      <!-- Emergency Contact -->
+      <div class="full-width">
+        <h2>Emergency Contact</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+          <div><label>Emergency Contact Name</label><input type="text" id="emergencyName" required /></div>
+          <div><label>Relationship</label><input type="text" id="emergencyRelationship" required placeholder="e.g., Spouse, Parent" /></div>
+          <div><label>Primary Phone</label><input type="tel" id="emergencyPhone" required /></div>
+          <div><label>Alternate Phone</label><input type="tel" id="emergencyAltPhone" /></div>
+          <div class="full-width" style="grid-column: 1 / -1;"><label>Emergency Contact Email</label><input type="email" id="emergencyEmail" /></div>
+        </div>
+      </div>
+
+      <!-- Document Checklist -->
+      <div class="full-width">
+        <h2>Document Checklist</h2>
+        <div class="checkbox-group">
+          <div class="checkbox-item"><input type="checkbox" id="docCDL" /><label for="docCDL">CDL (Front & Back)</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docMedicalCard" /><label for="docMedicalCard">Medical Examiner's Certificate</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docSSCard" /><label for="docSSCard">Social Security Card</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docMVR" /><label for="docMVR">Motor Vehicle Record (MVR)</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docDrugTest" /><label for="docDrugTest">Pre-Employment Drug Test Results</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docBackground" /><label for="docBackground">Criminal Background Check</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docPSP" /><label for="docPSP">FMCSA PSP Report</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docDAC" /><label for="docDAC">DAC Report</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docRoadTest" /><label for="docRoadTest">Road Test Certificate</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docW9" /><label for="docW9">W-9 Form</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docDirectDeposit" /><label for="docDirectDeposit">Direct Deposit Form</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="docContract" /><label for="docContract">Signed Driver Agreement/Contract</label></div>
+        </div>
+        <label for="documentNotes">Document Notes (e.g., expiration dates, issues)</label>
+        <textarea id="documentNotes" rows="3" placeholder="Any notes..."></textarea>
+      </div>
+
+      <button type="submit" class="full-width">Submit Driver Onboarding</button>
+    </form>
+  </div>
+
+  <script>
+    const SERVICE_ID = "service_hltb7ca";
+    const TEMPLATE_ID = "template_xznlyxk";
+
+    const form = document.getElementById('driverForm');
+    const statusMessage = document.getElementById('statusMessage');
+
+    const documentLabels = {
+      docCDL: "CDL", docMedicalCard: "Medical Card", docSSCard: "SS Card", docMVR: "MVR",
+      docDrugTest: "Drug Test", docBackground: "Background Check", docPSP: "PSP Report",
+      docDAC: "DAC Report", docRoadTest: "Road Test", docW9: "W-9",
+      docDirectDeposit: "Direct Deposit", docContract: "Driver Contract"
+    };
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      statusMessage.innerHTML = '<div class="success-message">Processing... sending email...</div>';
+
+      const checkedDocs = Object.keys(documentLabels)
+        .filter(key => document.getElementById(key).checked)
+        .map(key => documentLabels[key]);
+
+      const driverData = {
+        fullName: `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        ssn: document.getElementById('ssn').value.trim(),
+        dob: document.getElementById('dob').value,
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim() || 'N/A',
+        address: `${document.getElementById('address').value.trim()}, ${document.getElementById('city').value.trim()}, ${document.getElementById('state').value.trim()} ${document.getElementById('zip').value.trim()}`,
+        cdlNumber: document.getElementById('cdlNumber').value.trim(),
+        cdlState: document.getElementById('cdlState').value,  // Now gets the 2-letter code
+        cdlStateFull: document.getElementById('cdlState').options[document.getElementById('cdlState').selectedIndex].text,  // Full name for email
+        cdlClass: document.getElementById('cdlClass').value,
+        endorsements: document.getElementById('endorsements').value.trim() || 'None',
+        experience: document.getElementById('experience').value,
+        previousCarrier: document.getElementById('previousCarrier').value.trim() || 'N/A',
+        hireDate: document.getElementById('hireDate').value,
+        driverType: document.getElementById('driverType').value,
+        truckNumber: document.getElementById('truckNumber').value.trim() || 'Not assigned',
+        trailerNumber: document.getElementById('trailerNumber').value.trim() || 'Not assigned',
+        emergencyName: document.getElementById('emergencyName').value.trim(),
+        emergencyRelationship: document.getElementById('emergencyRelationship').value.trim(),
+        emergencyPhone: document.getElementById('emergencyPhone').value.trim(),
+        emergencyAltPhone: document.getElementById('emergencyAltPhone').value.trim() || 'N/A',
+        emergencyEmail: document.getElementById('emergencyEmail').value.trim() || 'N/A',
+        documentsSubmitted: checkedDocs.length ? checkedDocs.join(', ') : 'None',
+        documentNotes: document.getElementById('documentNotes').value.trim() || 'None',
+        submissionDate: new Date().toLocaleString()
+      };
+
+      const templateParams = {
+        to_email: "mo7ammad.alsoufi@gmail.com",
+        driver_name: driverData.fullName,
+        submission_date: driverData.submissionDate,
+        message: `
+New Driver Onboarding Submission
+
+Personal Information
+- Name: ${driverData.fullName}
+- SSN: ${driverData.ssn}
+- DOB: ${driverData.dob}
+- Phone: ${driverData.phone}
+- Email: ${driverData.email}
+- Address: ${driverData.address}
+
+License Information
+- CDL #: ${driverData.cdlNumber}
+- State Issued: ${driverData.cdlStateFull} (${driverData.cdlState})
+- Class: ${driverData.cdlClass}
+- Endorsements: ${driverData.endorsements}
+
+Experience Information
+- Years of Experience: ${driverData.experience}
+- Previous Carrier: ${driverData.previousCarrier}
+
+Employment Details
+- Hire Date: ${driverData.hireDate}
+- Driver Type: ${driverData.driverType}
+- Truck #: ${driverData.truckNumber}
+- Trailer #: ${driverData.trailerNumber}
+
+Emergency Contact
+- Name: ${driverData.emergencyName}
+- Relationship: ${driverData.emergencyRelationship}
+- Phone: ${driverData.emergencyPhone} (Alt: ${driverData.emergencyAltPhone})
+- Email: ${driverData.emergencyEmail}
+
+Documents Submitted: ${driverData.documentsSubmitted}
+Document Notes: ${driverData.documentNotes}
+        `.trim()
+      };
+
+      emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+        .then(() => {
+          statusMessage.innerHTML = `
+            <div class="success-message">
+              ✓ Success! Onboarding form for <strong>${driverData.fullName}</strong> has been submitted.<br>
+              Email sent to mo7ammad.alsoufi@gmail.com<br><br>
+              Form is ready for the next driver.
+            </div>`;
+          form.reset();
+        })
+        .catch((err) => {
+          console.error('EmailJS error:', err);
+          statusMessage.innerHTML = `
+            <div class="error-message">
+              Email failed to send. Please check your internet connection and try again.<br>
+              (Error details in browser console)
+            </div>`;
+          form.reset();
+        });
+    });
+  </script>
+</body>
+</html>
