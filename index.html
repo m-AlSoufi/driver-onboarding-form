@@ -161,6 +161,13 @@
       <!-- Document Checklist -->
       <div class="full-width">
         <h2>Document Checklist</h2>
+<style>
+        h3 {
+            text-decoration: underline;
+        }
+    </style>
+<h3>Please send all documents checked below to Yousef Al Bawab</h3>
+
         <div class="checkbox-group">
           <div class="checkbox-item"><input type="checkbox" id="docCDL" /><label for="docCDL">CDL (Front & Back)</label></div>
           <div class="checkbox-item"><input type="checkbox" id="docMedicalCard" /><label for="docMedicalCard">Medical Examiner's Certificate</label></div>
@@ -282,8 +289,7 @@ Document Notes: ${driverData.documentNotes}
           statusMessage.innerHTML = `
             <div class="success-message">
               ✓ Success! Onboarding form for <strong>${driverData.fullName}</strong> has been submitted.<br>
-              Email sent to mo7ammad.alsoufi@gmail.com<br><br>
-              Form is ready for the next driver.
+              Form was sent to Al Bawab, LLC<br><br>
             </div>`;
           form.reset();
         })
